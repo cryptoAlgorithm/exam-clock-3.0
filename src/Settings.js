@@ -181,7 +181,7 @@ export default function Settings(props) {
                         A project by Vincent Kwok, {new Date().getFullYear()}
                     </Typography>
                     <ButtonGroup variant="outlined" aria-label="Contact me" className={classes.txtFSp}>
-                        <Button>GitHub</Button>
+                        <Button onClick={() => window.open('https://github.com/cryptoAlgorithm/exam-clock-3.0')}>GitHub</Button>
                         <Button>About</Button>
                         <Button>Credits</Button>
                     </ButtonGroup>

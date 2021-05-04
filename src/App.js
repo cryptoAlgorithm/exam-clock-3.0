@@ -1,5 +1,4 @@
 import Clock from './Clock';
-import './App.css';
 import './Settings'
 import React, {useState} from "react";
 

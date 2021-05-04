@@ -38,10 +38,7 @@ export default function FontSearcher(props) {
                 return;
             }
 
-            if (active) {
-                const data = await resp.json();
-                setOptions(data.items);
-            }
+            if (active) setOptions((await resp.json()).items);
         })();
 
         return () => {
@@ -63,7 +60,7 @@ export default function FontSearcher(props) {
             onChange={(e, nv) => {
                 setSelVal(nv);
                 const v = options[Object.keys(options).find(key => options[key] === nv)];
-                if (v) props.onURLChanged(v.files.regular);
+                if (v) props.onURLChanged(v.files.regular.replace(/^http/m, 'https'));
             }}
             getOptionSelected={(option, value) => option.family === value.family}
             getOptionLabel={(option) => option.family}

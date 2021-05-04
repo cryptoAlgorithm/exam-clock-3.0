@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         borderRadius: 16,
         boxShadow: theme.shadows[6],
+        opacity: .9,
     },
     iFace: {
         position: 'absolute',
@@ -117,8 +118,8 @@ export default function Clock(props) {
         let h = now.getHours();
         if (h > 12) h -= 12;
         setDegS((now.getSeconds()) * 6);
-        setDegM(now.getMinutes() * 6);
-        setDegH(h * 30);
+        setDegM(now.getMinutes() * 6 + (now.getSeconds()) / 10);
+        setDegH(h * 30 + now.getMinutes() / 2);
         setDigS(fNum(now.getSeconds()));
         setDigM(fNum(now.getMinutes()));
         setDigH(now.getHours());
