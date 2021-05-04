@@ -24,7 +24,7 @@ export default function App() {
             <ThemeProvider theme={themeOptions(appear.includes('dark') ? 'dark' : 'light', fontURL)}>
                 <CssBaseline />
                     <Switch>
-                        <Route exact path="/"><Main a={appear} sa={setAppear} f={fontURL} sf={setFontURL}/></Route>
+                        <Route exact path={['/', '/index', '/index.html']}><Main a={appear} sa={setAppear} f={fontURL} sf={setFontURL}/></Route>
                         <Route path="*"><NotFound /></Route>
                     </Switch>
             </ThemeProvider>
