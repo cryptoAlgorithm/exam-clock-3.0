@@ -2,11 +2,16 @@
 
 > An exam clock to be used in exams
 
+## About
+
 This is an exam clock made in React. It's main aim is to be used
 in an exam to replace one of the other exam clocks, offering more 
 features, and a more streamlined user interface.
 
-Works best in Chromium-based browsers and Firefox
+This clock was inspired by several other exam clocks, like 
+[this](https://github.com/appventure-nush/exam-clock-2020) one.
+
+Works best in Chromium-based browsers and Firefox.
 
 ### Known issues
 
