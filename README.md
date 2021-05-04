@@ -8,4 +8,10 @@ Works best in Chromium-based browsers and Firefox
 
 ### Known issues
 
-* The clock doesn't size properly in Safari.
+* Incorrect clock sizing in browsers without `aspect-ratio` support
+  (IN_PROGRESS)
+  
+### Credits 
+
+* The [React](https://reactjs.org/) project 
+* The [Material UI](https://material-ui.com/) React UI library
