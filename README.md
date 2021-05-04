@@ -2,7 +2,9 @@
 
 > An exam clock to be used in exams
 
-This is a clock made in react, mostly as a react icebreaker.
+This is an exam clock made in React. It's main aim is to be used
+in an exam to replace one of the other exam clocks, offering more 
+features, and a more streamlined user interface.
 
 Works best in Chromium-based browsers and Firefox
 
