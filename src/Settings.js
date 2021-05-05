@@ -16,6 +16,7 @@ import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
 import UndoRoundedIcon from '@material-ui/icons/UndoRounded';
 import ModeNightRoundedIcon from '@material-ui/icons/ModeNightRounded';
 import AccessTimeRoundedIcon from '@material-ui/icons/AccessTimeRounded';
+import MailRoundedIcon from '@material-ui/icons/MailRounded';
 
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -50,6 +51,8 @@ export default function Settings(props) {
     const classes = useStyles();
 
     const formatAction = (e, a) => (e ? 'Disable' : 'Enable') + a;
+
+    const openNew = (u) => window.open(u);
 
     return (
         <DialogContent>
@@ -180,11 +183,19 @@ export default function Settings(props) {
                         An exam clock to be used in exams<br/>
                         A project by Vincent Kwok, {new Date().getFullYear()}
                     </Typography>
-                    <ButtonGroup variant="outlined" aria-label="Contact me" className={classes.txtFSp}>
-                        <Button onClick={() => window.open('https://github.com/cryptoAlgorithm/exam-clock-3.0')}>GitHub</Button>
-                        <Button>About</Button>
-                        <Button>Credits</Button>
+                    <ButtonGroup variant="outlined" aria-label="Contact me"
+                                 sx={{width: '100%', justifyContent: 'center'}}
+                                 className={classes.txtFSp}>
+                        <Button onClick={() => openNew('https://github.com/cryptoAlgorithm/exam-clock-3.0')}>GitHub</Button>
+                        <Button onClick={() => openNew('/about')}>About</Button>
+                        <Button onClick={() => openNew('/credits')}>Credits</Button>
                     </ButtonGroup>
+                    <Button sx={{ marginTop: 1.5, width: '100%' }}
+                            startIcon={<MailRoundedIcon />}
+                            href='mailto:hi@clockexe.cf'
+                            variant='contained'>
+                        Contact Me
+                    </Button>
                 </AccordionDetails>
             </Accordion>
         </DialogContent>

@@ -6,15 +6,21 @@ import { Button, CardActionArea, CardActions } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
 import oops from './img/oops.webp';
+import background from './img/oopsBg.webp';
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        backgroundImage: `url(${background})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+    },
+    container: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100vh',
-        background: `linear-gradient(to bottom, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
-    },
+        backdropFilter: 'blur(8px)',
+    }
 }));
 
 export default function NotFound() {
@@ -22,29 +28,31 @@ export default function NotFound() {
 
     return (
         <div className={classes.root}>
-            <Card sx={{ maxWidth: 500, margin: '1rem' }} elevation={12}>
-                <CardActionArea href='/'>
-                    <CardMedia
-                        sx={{ aspectRatio: '16/9' }}
-                        image={oops}
-                        title="Contemplative Reptile"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            You seem lost
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Oops... You seem to have fallen off the sides of the flat World Wide Web!
-                            Click me to go back home!
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-                <CardActions>
-                    <Button size="small" href='/'>Home</Button>
-                    <Button size="small" href='/about'>About</Button>
-                    <Button size="small" href='/credits'>Credits</Button>
-                </CardActions>
-            </Card>
+            <div className={classes.container}>
+                <Card sx={{ maxWidth: 500, margin: '1rem' }} elevation={12}>
+                    <CardActionArea href='/'>
+                        <CardMedia
+                            sx={{ aspectRatio: '16/9' }}
+                            image={oops}
+                            title="Long road"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                You seem lost
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                Oops... You seem to have fallen off the sides of the flat World Wide Web!
+                                Click me to go back home!
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                        <Button size="small" href='/'>Home</Button>
+                        <Button size="small" href='/about'>About</Button>
+                        <Button size="small" href='/credits'>Credits</Button>
+                    </CardActions>
+                </Card>
+            </div>
         </div>
 
     )
