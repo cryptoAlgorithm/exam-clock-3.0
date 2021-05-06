@@ -9,7 +9,7 @@ import {makeStyles} from "@material-ui/core/styles";
 
 import PlayArrowRoundedIcon from '@material-ui/icons/PlayArrowRounded';
 import StopRoundedIcon from '@material-ui/icons/StopRounded';
-import {ClickAwayListener, Tooltip} from '@material-ui/core';
+import {ClickAwayListener, FormControlLabel, FormGroup, Snackbar, Switch, Tooltip} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     nMg: { marginTop: theme.spacing(1) + '!important' },
@@ -37,6 +37,10 @@ export default function DigitalTimer(props) {
         [percentDone, setPercentDone] = useState(100),
         [endTime, setEndTime] = useState(0),
         [fTT, setFTT] = useState(0), // Decouple from totalTime which might change when timer is running
+        [snack, setSnack] = useState({
+            msg: '',
+            open: false
+        }),
         [confOpen, setConfOpen] = useState(false);
 
     let totalTime = props.s * 1000 + props.m * 60000 + props.h * 3600000;
@@ -44,7 +48,12 @@ export default function DigitalTimer(props) {
     const stopTimer = () => {
         setInt(null);
         setPercentDone(100);
-        setConfOpen(false)
+        setConfOpen(false);
+
+        setSnack({
+            open: true,
+            msg: 'Timer finished!'
+        })
     }
 
     useInterval(() => {
@@ -84,7 +93,7 @@ export default function DigitalTimer(props) {
     }
 
     return (
-        <div>
+        <>
             <Typography variant='h3' align='center'>
                 {fNum(int ? h : props.h)}h {fNum(int ? m : props.m)}m {fNum(int ? s : props.s)}s
             </Typography>
@@ -93,7 +102,7 @@ export default function DigitalTimer(props) {
                             className={clsx(classes.fBd, classes.nMg)} />
 
             <ClickAwayListener onClickAway={() => setConfOpen(false)}>
-                <div>
+                <div style={{ display: 'flex', alignItems: 'center' }} className={classes.dMg}>
                     <Tooltip
                         PopperProps={{
                             disablePortal: true,
@@ -111,12 +120,28 @@ export default function DigitalTimer(props) {
                                 <Button onClick={() => setConfOpen(false)}>Close</Button>
                             </>
                         }>
-                        <Button className={classes.dMg} variant='contained' disabled={confOpen}
+                        <Button variant='contained' disabled={confOpen || totalTime <= 0}
                                 startIcon={int ? <StopRoundedIcon /> : <PlayArrowRoundedIcon />}
                                 onClick={startTimer}>{int ? 'Stop' : 'Start'}</Button>
                     </Tooltip>
+
+                    <Tooltip title='Auto-starts the timer when the start time specified in Settings is reached'>
+                        <FormGroup sx={{ml: 2}}>
+                            <FormControlLabel control={<Switch defaultChecked />} label="Auto-start" />
+                        </FormGroup>
+                    </Tooltip>
                 </div>
             </ClickAwayListener>
-        </div>
+
+            <Snackbar
+                open={snack.open}
+                autoHideDuration={5000}
+                onClose={() => setSnack({
+                    msg: '',
+                    open: false
+                })}
+                message={snack.msg}
+            />
+        </>
     )
 }

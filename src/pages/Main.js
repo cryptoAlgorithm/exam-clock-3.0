@@ -1,5 +1,5 @@
 import {useState} from "react";
-import Clock from './components/Clock';
+import Clock from '../components/Clock';
 
 // MUI
 import {makeStyles} from "@material-ui/core/styles";
@@ -22,8 +22,8 @@ import VolumeUpRoundedIcon from '@material-ui/icons/VolumeUpRounded';
 import VolumeOffRoundedIcon from '@material-ui/icons/VolumeOffRounded';
 
 // Components
-import Settings from "./components/Settings";
-import DigitalTimer from "./components/DigitalTimer";
+import Settings from "../components/Settings";
+import DigitalTimer from "../components/DigitalTimer";
 
 const useStyles = makeStyles((theme) => ({
     clock: {
@@ -132,6 +132,12 @@ export default function Main(props) {
                         </CardContent>
                     </Card>
                     }
+
+                    <Card elevation={24} className={classes.cardMg}>
+                        <CardContent style={{paddingBottom: 16}}>
+                            <Typography variant='overline'>Duration</Typography>
+                        </CardContent>
+                    </Card>
 
                     <Card elevation={24} className={classes.cardMg}>
                         <CardContent style={{paddingBottom: 16}}>
