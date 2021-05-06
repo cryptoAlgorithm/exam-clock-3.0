@@ -1,4 +1,5 @@
 @font-face {
   font-family: 'sevenSeg';
   src: local('sevenSeg'), url(./fonts/sevenSeg.woff) format('woff');
+  font-display: swap;
 }
