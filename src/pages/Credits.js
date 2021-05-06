@@ -12,7 +12,7 @@ import KeyboardArrowUpRoundedIcon from '@material-ui/icons/KeyboardArrowUpRounde
 import DescriptionRoundedIcon from '@material-ui/icons/DescriptionRounded';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 
-import ScrollTop from './ScrollTop';
+import ScrollTop from '../components/ScrollTop';
 import IconButton from '@material-ui/core/IconButton';
 import {Link} from '@material-ui/core';
 

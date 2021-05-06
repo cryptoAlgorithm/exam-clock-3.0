@@ -5,8 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import { Button, CardActionArea, CardActions } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
-import oops from './img/oops.webp';
-import background from './img/oopsBg.webp';
+import oops from '../img/oops.webp';
+import background from '../img/oopsBg.webp';
 
 const useStyles = makeStyles((theme) => ({
     root: {

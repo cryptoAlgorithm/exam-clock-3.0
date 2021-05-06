@@ -12,9 +12,9 @@ import KeyboardArrowUpRoundedIcon from '@material-ui/icons/KeyboardArrowUpRounde
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import AlarmRoundedIcon from '@material-ui/icons/AlarmRounded';
 
-import ScrollTop from './ScrollTop';
+import ScrollTop from '../components/ScrollTop';
 
-import clock from './img/clock.svg';
+import clock from '../img/clock.svg';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import {Link} from '@material-ui/core';

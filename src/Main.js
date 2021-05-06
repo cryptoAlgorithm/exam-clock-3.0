@@ -1,5 +1,5 @@
 import {useState} from "react";
-import Clock from './Clock';
+import Clock from './components/Clock';
 
 // MUI
 import {makeStyles} from "@material-ui/core/styles";
@@ -22,8 +22,8 @@ import VolumeUpRoundedIcon from '@material-ui/icons/VolumeUpRounded';
 import VolumeOffRoundedIcon from '@material-ui/icons/VolumeOffRounded';
 
 // Components
-import Settings from "./Settings";
-import DigitalTimer from "./DigitalTimer";
+import Settings from "./components/Settings";
+import DigitalTimer from "./components/DigitalTimer";
 
 const useStyles = makeStyles((theme) => ({
     clock: {

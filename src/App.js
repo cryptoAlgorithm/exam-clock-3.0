@@ -1,8 +1,8 @@
-import './Settings'
+import './components/Settings'
 import Main from './Main';
-import NotFound from './NotFound';
-import About from './About';
-import themeOptions from './themeOptions';
+import NotFound from './pages/NotFound';
+import About from './pages/About';
+import themeOptions from './lib/themeOptions';
 
 import {useState} from 'react';
 import {CssBaseline, ThemeProvider} from '@material-ui/core';
@@ -12,7 +12,7 @@ import {
     Switch,
     Route,
 } from 'react-router-dom';
-import Credits from './Credits';
+import Credits from './pages/Credits';
 
 export default function App() {
     const returnIfNull = (v, d) => !v || v === 'null' ? d : v;

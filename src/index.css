@@ -1,6 +1,4 @@
 @font-face {
   font-family: 'sevenSeg';
   src: local('sevenSeg'), url(./fonts/sevenSeg.woff) format('woff');
-  /* other formats include: 'woff2', 'truetype, 'opentype',
-                            'embedded-opentype', and 'svg' */
 }

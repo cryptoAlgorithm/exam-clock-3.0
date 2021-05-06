@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useState } from 'react';
-import useInterval from './lib/useInterval';
+import useInterval from '../lib/useInterval';
 
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -30,17 +30,14 @@ export default function DigitalTimer(props) {
 
     const fNum = (n) => n.toString().padStart(2, '0');
 
-    /*const [h, setH] = useState(props.remaining.getHours()),
-        [m, setM] = useState(props.remaining.getMinutes()),
-        [s, setS] = useState(props.remaining.getSeconds());*/
-
     const [h, setH] = useState(props.h),
         [m, setM] = useState(props.m),
         [s, setS] = useState(props.s),
-    [int, setInt] = useState(null),
-    [percentDone, setPercentDone] = useState(100),
-    [endTime, setEndTime] = useState(0),
-    [confOpen, setConfOpen] = useState(false);
+        [int, setInt] = useState(null),
+        [percentDone, setPercentDone] = useState(100),
+        [endTime, setEndTime] = useState(0),
+        [fTT, setFTT] = useState(0), // Decouple from totalTime which might change when timer is running
+        [confOpen, setConfOpen] = useState(false);
 
     let totalTime = props.s * 1000 + props.m * 60000 + props.h * 3600000;
 
@@ -66,7 +63,7 @@ export default function DigitalTimer(props) {
         setM(minutes);
         setS(seconds);
 
-        setPercentDone(Math.floor(timeLeft / totalTime * 100));
+        setPercentDone(Math.floor(timeLeft / fTT * 100));
     }, int);
 
     const startTimer = () => {
@@ -80,6 +77,8 @@ export default function DigitalTimer(props) {
         setS(props.s);
 
         setEndTime(+new Date() + totalTime);
+
+        setFTT(totalTime);
 
         setInt(200);
     }
