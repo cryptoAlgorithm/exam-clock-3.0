@@ -72,6 +72,5 @@ body.light ::-webkit-scrollbar-track, body.light ::-webkit-scrollbar-corner {
         }
     }
 
-    console.log(createMuiTheme(options))
-    return (createMuiTheme(options))
+    return (createMuiTheme(options));
 }

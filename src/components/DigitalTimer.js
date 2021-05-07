@@ -98,6 +98,7 @@ export default function DigitalTimer(props) {
                 {fNum(int ? h : props.h)}h {fNum(int ? m : props.m)}m {fNum(int ? s : props.s)}s
             </Typography>
             <LinearProgress variant="determinate"
+                            aria-label='Time remaining till timer ends'
                             value={percentDone}
                             className={clsx(classes.fBd, classes.nMg)} />
 

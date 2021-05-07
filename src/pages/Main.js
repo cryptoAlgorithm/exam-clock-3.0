@@ -100,7 +100,8 @@ export default function Main(props) {
                             <Toolbar disableGutters={true}>
                                 <Tooltip title={document.fullscreenEnabled ? 'Fullscreen' : 'Fullscreen mode is not supported'}>
                                     <span>
-                                        <IconButton onClick={() =>
+                                        <IconButton aria-label='Enter/exit fullscreen'
+                                            onClick={() =>
                                         {
                                             if (document.fullscreenElement) document.exitFullscreen();
                                             else document.body.requestFullscreen();
@@ -113,7 +114,8 @@ export default function Main(props) {
                                 </Tooltip>
                                 <Tooltip title={(soundOn ? 'M' : 'Unm') + 'ute sound effects'}>
                                     <span>
-                                        <IconButton onClick={() => setSoundOn(!soundOn)}>
+                                        <IconButton aria-label='Enable/disable sound effects'
+                                            onClick={() => setSoundOn(!soundOn)}>
                                             {soundOn ? <VolumeUpRoundedIcon /> : <VolumeOffRoundedIcon />}
                                         </IconButton>
                                     </span>
