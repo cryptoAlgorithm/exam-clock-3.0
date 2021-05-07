@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,WACE,sBAAuB,CACvB,8EAAiE,CACjE,iBACF","file":"main.34020d74.chunk.css","sourcesContent":["@font-face {\n  font-family: 'sevenSeg';\n  src: local('sevenSeg'), url(./fonts/sevenSeg.woff) format('woff');\n  font-display: swap;\n}"]}
