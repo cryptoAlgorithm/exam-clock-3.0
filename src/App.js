@@ -1,7 +1,4 @@
 import './components/Settings'
-/*import Main from './pages/Main';
-import NotFound from './pages/NotFound';
-import About from './pages/About'; */
 import themeOptions from './lib/themeOptions';
 
 import { useState, lazy, Suspense } from 'react';
