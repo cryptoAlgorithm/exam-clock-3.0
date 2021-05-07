@@ -8,13 +8,23 @@ const handBaseZ = 1;
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '100%',
-        height: 'auto',
+        width: '0',
+        height: '0',
+
+        paddingTop:
+            `min(100%, min(calc(100vh - ${theme.spacing(2)}), calc(100vw - calc(${theme.spacing(2)} + 300px))))`,
+        paddingRight:
+            `min(100%, min(calc(100vh - ${theme.spacing(2)}), calc(100vw - calc(${theme.spacing(2)} + 300px))))`,
+
+        [theme.breakpoints.down(780)]: {
+            paddingTop:
+                `min(100%, calc(100vh - ${theme.spacing(2)}))`,
+            paddingRight:
+                `min(100%, calc(100vh - ${theme.spacing(2)}))`,
+        },
+        position: 'relative',
         margin: 'auto',
-        maxHeight: `calc(100vh - ${theme.spacing(2)})`,
-        padding: theme.spacing(2),
         borderRadius: '100% !important',
-        aspectRatio: 1
     },
     face: {
         backgroundColor: 'transparent',
@@ -22,7 +32,9 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: '100%',
         border: `1px solid ${theme.palette.grey[400]}`,
-        position: 'relative',
+        position: 'absolute',
+        top: 0,
+        left: 0,
         boxShadow: theme.shadows[1]
     },
     hands: {

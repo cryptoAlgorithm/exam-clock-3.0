@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 'auto',
         width: 300,
     },
-    supText: { whiteSpace: 'break-spaces' },
+    supText: { whiteSpace: 'break-spaces', textAlign: 'center' },
     divider: { marginBottom: theme.spacing(1) + ' !important' },
     controls: {
         display: 'flex'
@@ -88,7 +88,7 @@ export default function Main(props) {
 
 
     return (
-        <div>
+        <>
             <div className={classes.clock}>
                 <Clock ampm={props.a.includes('12hr')} />
 
@@ -138,6 +138,8 @@ export default function Main(props) {
                     <Card elevation={24} className={classes.cardMg}>
                         <CardContent style={{paddingBottom: 16}}>
                             <Typography variant='overline'>Duration</Typography>
+                            <Typography variant='h4' className={classes.supText}>1000 - 2000hrs</Typography>
+                            <Typography variant='h5' className={classes.supText}>100 hours</Typography>
                         </CardContent>
                     </Card>
 
@@ -167,6 +169,6 @@ export default function Main(props) {
                     <Button onClick={_settingsClose}>Done</Button>
                 </DialogActions>
             </Dialog>
-        </div>
+        </>
     );
 }

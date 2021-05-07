@@ -15,8 +15,8 @@ Works best in Chromium-based browsers and Firefox.
 
 ### Known issues
 
-* Incorrect clock sizing in browsers without `aspect-ratio` support
-  (IN_PROGRESS)
+* ~~Incorrect clock sizing in browsers without `aspect-ratio` 
+  support~~ (FIXED)
   
 ### Credits 
 
