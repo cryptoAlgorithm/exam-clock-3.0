@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme) => ({
     root: {
         width: '0',
         height: '0',
+        minWidth: `calc(420px + ${theme.spacing(3)})`,
+        minHeight: `calc(420px + ${theme.spacing(3)})`,
 
         paddingTop:
             `min(100%, min(calc(100vh - ${theme.spacing(2)}), calc(100vw - calc(${theme.spacing(2)} + 300px))))`,
@@ -18,9 +20,9 @@ const useStyles = makeStyles((theme) => ({
 
         [theme.breakpoints.down(780)]: {
             paddingTop:
-                `min(100%, calc(100vh - ${theme.spacing(2)}))`,
+                `min(100%, calc(100vw - ${theme.spacing(2)}))`,
             paddingRight:
-                `min(100%, calc(100vh - ${theme.spacing(2)}))`,
+                `min(100%, calc(100vw - ${theme.spacing(2)}))`,
         },
         position: 'relative',
         margin: 'auto',
@@ -29,12 +31,14 @@ const useStyles = makeStyles((theme) => ({
     face: {
         backgroundColor: 'transparent',
         borderRadius: '50%',
-        width: '100%',
-        height: '100%',
+        width: `calc(100% - ${theme.spacing(3)})`,
+        height: `calc(100% - ${theme.spacing(3)})`,
+        minWidth: 420,
+        minHeight: 420,
         border: `1px solid ${theme.palette.grey[400]}`,
         position: 'absolute',
-        top: 0,
-        left: 0,
+        top: theme.spacing(1.5),
+        left: theme.spacing(1.5),
         boxShadow: theme.shadows[1]
     },
     hands: {
