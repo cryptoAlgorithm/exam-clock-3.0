@@ -10,20 +10,16 @@ const useStyles = makeStyles((theme) => ({
     root: {
         width: '0',
         height: '0',
-        minWidth: `calc(420px + ${theme.spacing(3)})`,
-        minHeight: `calc(420px + ${theme.spacing(3)})`,
 
-        paddingTop:
-            `min(100%, min(calc(100vh - ${theme.spacing(2)}), calc(100vw - calc(${theme.spacing(2)} + 300px))))`,
-        paddingRight:
-            `min(100%, min(calc(100vh - ${theme.spacing(2)}), calc(100vw - calc(${theme.spacing(2)} + 300px))))`,
+        paddingTop: `min(100%, min(calc(100vh - ${theme.spacing(2)}), calc(100vw - calc(${theme.spacing(2)} + 300px))))`,
+        paddingRight: `min(100%, min(calc(100vh - ${theme.spacing(2)}), calc(100vw - calc(${theme.spacing(2)} + 300px))))`,
 
         [theme.breakpoints.down(780)]: {
-            paddingTop:
-                `min(100%, calc(100vw - ${theme.spacing(2)}))`,
-            paddingRight:
-                `min(100%, calc(100vw - ${theme.spacing(2)}))`,
+            paddingTop: `min(100%, calc(100vw - ${theme.spacing(2)}))`,
+            paddingRight: `min(100%, calc(100vw - ${theme.spacing(2)}))`,
+            marginBottom: theme.spacing(1)
         },
+
         position: 'relative',
         margin: 'auto',
         borderRadius: '100% !important',
@@ -33,8 +29,6 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '50%',
         width: `calc(100% - ${theme.spacing(3)})`,
         height: `calc(100% - ${theme.spacing(3)})`,
-        minWidth: 420,
-        minHeight: 420,
         border: `1px solid ${theme.palette.grey[400]}`,
         position: 'absolute',
         top: theme.spacing(1.5),

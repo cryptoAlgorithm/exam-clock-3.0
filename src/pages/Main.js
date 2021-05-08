@@ -27,15 +27,16 @@ import DigitalTimer from "../components/DigitalTimer";
 
 const useStyles = makeStyles((theme) => ({
     clock: {
-        height: `100vh`,
+        minHeight: '100vh',
         padding: theme.spacing(1),
+
         display: 'grid',
+        [theme.breakpoints.down(780)]: {
+            display: 'block',
+        },
+
         gridTemplateColumns: 'auto 300px',
         gridTemplateRows: 'auto',
-        [theme.breakpoints.down(780)]: {
-            gridTemplateColumns: 'auto',
-            gridTemplateRows: 'auto auto',
-        },
         gridGap: theme.spacing(1),
     },
     fab: {
