@@ -1,5 +1,9 @@
 @font-face {
-  font-family: 'sevenSeg';
-  src: local('sevenSeg'), url(./fonts/sevenSeg.woff) format('woff');
-  font-display: swap;
+    font-family: 'sevenSeg';
+    src: local('sevenSeg'), url(./fonts/sevenSeg.woff) format('woff');
+    font-display: swap;
+}
+
+body {
+    overflow-x: hidden;
 }
