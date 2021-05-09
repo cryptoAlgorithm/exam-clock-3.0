@@ -9,7 +9,8 @@ import {makeStyles} from "@material-ui/core/styles";
 
 import PlayArrowRoundedIcon from '@material-ui/icons/PlayArrowRounded';
 import StopRoundedIcon from '@material-ui/icons/StopRounded';
-import {ClickAwayListener, FormControlLabel, FormGroup, Snackbar, Switch, Tooltip} from '@material-ui/core';
+import {FormControlLabel, FormGroup, Popover, Snackbar, Switch, Tooltip} from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
     nMg: { marginTop: theme.spacing(1) + '!important' },
@@ -41,14 +42,14 @@ export default function DigitalTimer(props) {
             msg: '',
             open: false
         }),
-        [confOpen, setConfOpen] = useState(false);
+        [confArgs, setConfArgs] = useState({open: false, anchor: null});
 
     let totalTime = props.s * 1000 + props.m * 60000 + props.h * 3600000;
 
     const stopTimer = () => {
         setInt(null);
         setPercentDone(100);
-        setConfOpen(false);
+        setConfArgs({open: false, anchor: null})
 
         setSnack({
             open: true,
@@ -75,9 +76,9 @@ export default function DigitalTimer(props) {
         setPercentDone(Math.floor(timeLeft / fTT * 100));
     }, int);
 
-    const startTimer = () => {
+    const startTimer = (event) => {
         if (int) {
-            setConfOpen(true);
+            setConfArgs({open: true, anchor: event.currentTarget});
             return;
         } // Show confirmation tooltip
 
@@ -102,29 +103,31 @@ export default function DigitalTimer(props) {
                             value={percentDone}
                             className={clsx(classes.fBd, classes.nMg)} />
 
-            <ClickAwayListener onClickAway={() => setConfOpen(false)}>
                 <div style={{ display: 'flex', alignItems: 'center' }} className={classes.dMg}>
-                    <Tooltip
-                        PopperProps={{
-                            disablePortal: true,
+
+                    <Popover
+                        open={confArgs.open}
+                        anchorEl={confArgs.anchor}
+                        onClose={() => setConfArgs({open: false, anchor: null})}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center',
                         }}
-                        onClose={() => setConfOpen(false)}
-                        open={confOpen}
-                        disableFocusListener
-                        disableHoverListener
-                        disableTouchListener
-                        title={
-                            <>
-                                <Typography color="inherit">Are you sure you want to stop the timer?</Typography>
-                                <Button variant='contained' onClick={stopTimer} startIcon={<StopRoundedIcon />}
-                                        className={classes.confB}>Stop timer</Button>
-                                <Button onClick={() => setConfOpen(false)}>Close</Button>
-                            </>
-                        }>
-                        <Button variant='contained' disabled={confOpen || totalTime <= 0}
-                                startIcon={int ? <StopRoundedIcon /> : <PlayArrowRoundedIcon />}
-                                onClick={startTimer}>{int ? 'Stop' : 'Start'}</Button>
-                    </Tooltip>
+                        transformOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center',
+                        }}>
+                        <Box sx={{ paddingX: 1.5, paddingY: 1.2 }}>
+                            <Typography color="inherit">Are you sure you want to stop the timer?</Typography>
+                            <Button variant='contained' onClick={stopTimer} startIcon={<StopRoundedIcon />}
+                                    className={classes.confB}>Stop timer</Button>
+                            <Button onClick={() => setConfArgs({open: false, anchor: null})}>Close</Button>
+                        </Box>
+                    </Popover>
+
+                    <Button variant='contained' disabled={confArgs.open || totalTime <= 0}
+                            startIcon={int ? <StopRoundedIcon /> : <PlayArrowRoundedIcon />}
+                            onClick={startTimer}>{int ? 'Stop' : 'Start'}</Button>
 
                     <Tooltip title='Auto-starts the timer when the start time specified in Settings is reached'>
                         <FormGroup sx={{ml: 2}}>
@@ -132,7 +135,6 @@ export default function DigitalTimer(props) {
                         </FormGroup>
                     </Tooltip>
                 </div>
-            </ClickAwayListener>
 
             <Snackbar
                 open={snack.open}

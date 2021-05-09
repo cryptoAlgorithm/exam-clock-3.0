@@ -65,7 +65,9 @@ export default function App() {
                     </div>
                 }>
                     <Switch>
-                        <Route exact path={['/', '/index', '/index.html', '.', './index.html']}><Main a={appear} sa={setAppear} f={fontURL} sf={setFontURL}/></Route>
+                        <Route exact path={['/', '/index', '/index.html', '.', './index.html']}>
+                            <Main a={appear} sa={setAppear} f={fontURL} sf={setFontURL}/>
+                        </Route>
                         <Route path='/about'><About /></Route>
                         <Route path='/credits'><Credits /></Route>
                         <Route path='*'><NotFound /></Route>

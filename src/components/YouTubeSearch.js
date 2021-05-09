@@ -12,13 +12,38 @@ import {LinearProgress} from '@material-ui/core';
 
 import {decode} from 'he';
 
+function hexToRgb(hex) {
+    // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+    const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+        return r + r + g + g + b + b;
+    });
+
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
 const useStyles = makeStyles((theme) => ({
-    fsp: { marginTop: theme.spacing(1.5) + '!important', width: '100%' },
+    fsp: {
+        marginTop: theme.spacing(1.5) + '!important',
+        width: '100%',
+        position: 'sticky!important',
+        top: 0,
+        borderRadius: `${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0 0`,
+        zIndex: 1000,
+        backgroundColor: `rgba(${hexToRgb(theme.palette.background.paper).r}, 
+        ${hexToRgb(theme.palette.background.paper).g}, ${hexToRgb(theme.palette.background.paper).b}, .6)!important`,
+        backdropFilter: 'blur(12px) saturate(120%)'
+    },
     vidInfo: { marginLeft: theme.spacing(2) + '!important' },
     vidThumbs: {
         width: 120,
         height: 'auto',
-        borderRadius: theme.shape.borderRadius / 3 * 2
+        borderRadius: theme.shape.borderRadius / 3 * 2,
     },
     vidResultHolder: { borderRadius: theme.shape.borderRadius + 'px!important' }
 }));
@@ -32,7 +57,6 @@ export default function YouTubeSearch(props) {
         [results, setResults] = useState([]);
 
     const search = async () => {
-        console.log(sVal);
         setLoading(true);
         const resp = await
             fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${encodeURI(sVal)}&type=video&key=AIzaSyCzFb9z826uhBHYmnSUpxAytb9uA99G-60`,

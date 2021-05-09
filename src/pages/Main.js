@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(1),
         marginLeft: 'auto',
         marginRight: 'auto',
-        width: 300,
     },
     supText: { whiteSpace: 'break-spaces', textAlign: 'center' },
     divider: { marginBottom: theme.spacing(1) + ' !important' },
@@ -72,6 +71,8 @@ const useStyles = makeStyles((theme) => ({
     shrinkP: {
         marginBottom: theme.spacing(1),
         borderRadius: theme.shape.borderRadius,
+        overflow: 'hidden',
+        boxShadow: theme.shadows[12]
     }
 }));
 
@@ -88,7 +89,7 @@ export default function Main(props) {
     const [sOpen, setSOpen] = useState(false),
         [examDesc, setExamDesc] = useState(''),
         [examName, setExamName] = useState(''),
-        [timeLeft, setTimeLeft] = useState(new Date()),
+        [startTime, setStartTime] = useState(new Date()),
         [jBoxOpen, setJBoxOpen] = useState(false),
         [duration, setDuration] = useState(zero),
         [ctrlOpen, setCtrlOpen] = useState(false),
@@ -119,7 +120,7 @@ export default function Main(props) {
 
                 <div>
                     <Collapse in={ctrlOpen} collapsedSize={56} className={classes.shrinkP}>
-                        <Card elevation={12} className={classes.cardMg}>
+                        <Card elevation={12} className={classes.cardMg} sx={{boxShadow: 'none'}}>
                             <CardContent style={{paddingBottom: 8, paddingTop: 8}}>
                                 <div className={classes.btnRow}>
                                     <Typography variant='overline' className={classes.flexG}>Controls</Typography>
@@ -163,7 +164,7 @@ export default function Main(props) {
                             </CardContent>
                         </Card>
 
-                        <MediaControlCard id={ytVidID} vidT={ytVidT} />
+                        <MediaControlCard id={ytVidID} vidT={ytVidT} fURL={props.f}/>
                     </Collapse>
 
                     {(examName.trim() !== '' && examDesc.trim() !== '') &&
@@ -180,7 +181,10 @@ export default function Main(props) {
                     <Card elevation={12} className={classes.cardMg}>
                         <CardContent style={{paddingBottom: 16}}>
                             <Typography variant='overline'>Duration</Typography>
-                            <Typography variant='h4' className={classes.supText}>1000 - 2000hrs</Typography>
+                            <Typography variant='h4' className={classes.supText}>
+                                {startTime.getHours().toString().padStart(2, '0')}
+                                {startTime.getMinutes().toString().padStart(2, '0')} - 2000hrs
+                            </Typography>
                             <Typography variant='h5' className={classes.supText}>100 hours</Typography>
                         </CardContent>
                     </Card>
@@ -203,7 +207,7 @@ export default function Main(props) {
                 <DialogTitle id='st-t'>Settings</DialogTitle>
                 <Settings examDesc={examDesc} examDescChange={setExamDesc}
                           examTitle={examName} examTitleChange={setExamName}
-                          stTime={timeLeft} setStTime={setTimeLeft}
+                          stTime={startTime} setStTime={setStartTime}
                           duration={duration} setDuration={setDuration}
                           fontURLChange={_changeFontURL}
                           appearance={props.a} setAppearance={_changeAppear} />
@@ -216,7 +220,7 @@ export default function Main(props) {
                 <DialogTitle id='jb-t'>YouTube Jukebox</DialogTitle>
                 <YouTubeSearch setID={setYtVidID} setVidT={setYtVidT} />
                 <DialogActions>
-                    <Button onClick={() => setJBoxOpen(false)}>Done</Button>
+                    <Button onClick={() => setJBoxOpen(false)}>Close</Button>
                 </DialogActions>
             </Dialog>
         </>
